@@ -9,28 +9,25 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class Education {
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    
-    private String institucion;
-    private String fecha_ingreso;
-    private String fecha_egreso;
+
+    private String nombre;
     private String descripcion;
     private String foto;
 
-    public Education(){
+    public Project(){
 
     }
 
-    public Education(Long id, String institucion, String fecha_ingreso, String fecha_egreso, String descripcion, String foto){
+    public Project(Long id, String nombre, String descripcion, String foto){
         this.id = id;
-        this.institucion = institucion;
-        this.fecha_ingreso = fecha_ingreso;
-        this.fecha_egreso = fecha_egreso;
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.foto = foto;
     }
+
 }

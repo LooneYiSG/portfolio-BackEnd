@@ -9,28 +9,28 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class Education {
+public class Work {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    
-    private String institucion;
-    private String fecha_ingreso;
-    private String fecha_egreso;
-    private String descripcion;
-    private String foto;
 
-    public Education(){
+    private String institucion;
+    private String cargo;
+    private String fecha_desde;
+    private String fecha_hasta;
+    private String descripcion;
+
+    public Work(){
 
     }
 
-    public Education(Long id, String institucion, String fecha_ingreso, String fecha_egreso, String descripcion, String foto){
+    public Work(Long id, String institucion, String cargo, String fecha_desde, String fecha_hasta, String descripcion){
         this.id = id;
         this.institucion = institucion;
-        this.fecha_ingreso = fecha_ingreso;
-        this.fecha_egreso = fecha_egreso;
+        this.cargo = cargo;
+        this.fecha_desde = fecha_desde;
+        this.fecha_hasta = fecha_hasta;
         this.descripcion = descripcion;
-        this.foto = foto;
     }
 }
