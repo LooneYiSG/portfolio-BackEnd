@@ -20,8 +20,8 @@ public class WorkService implements IWorkService{
     }
 
     @Override
-    public void saveWork(Work work) {
-        workRepository.save(work);
+    public Work saveWork(Work work) {
+        return workRepository.save(work);
     }
 
     @Override

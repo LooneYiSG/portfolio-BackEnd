@@ -20,8 +20,8 @@ public class EducationService implements IEducationService{
     }
 
     @Override
-    public void saveEducation(Education education) {
-        educationRepository.save(education);
+    public Education saveEducation(Education education) {
+        return educationRepository.save(education);
     }
 
     @Override

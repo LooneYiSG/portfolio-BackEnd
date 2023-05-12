@@ -6,6 +6,7 @@ import com.example.backend.Model.Education;
 import com.example.backend.Model.Project;
 import com.example.backend.Model.Skill;
 import com.example.backend.Model.User;
+import com.example.backend.Model.UserDTO;
 import com.example.backend.Model.Work;
 import com.example.backend.service.IEducationService;
 import com.example.backend.service.IProjectService;
@@ -36,8 +37,8 @@ public class Controller {
 
     //Mapeamos los metodos http para la entidad user
     @PostMapping("/api/new/user")
-    public void addUser (@RequestBody User user){
-        userService.saveUser(user);
+    public User addUser (@RequestBody User user){
+        return userService.saveUser(user);
     }
 
     @GetMapping("/api/list/user")
@@ -52,9 +53,18 @@ public class Controller {
     }
 
     @PutMapping("/api/modify/user")
-    public void updateUser(@RequestBody User user){
-        userService.deleteUser(user.getId());
-        userService.saveUser(user);
+    public User updateUser(@RequestBody User user){
+        User updateUser = userService.searchUser(user.getId());
+        updateUser.setNombre(user.getNombre());
+        updateUser.setApellido(user.getApellido());
+        updateUser.setSobre_mi(user.getSobre_mi());
+        updateUser.setFoto(user.getFoto());
+        return userService.saveUser(updateUser);
+    }
+
+    @PostMapping("/api/login")
+    public UserDTO login(@RequestBody User user){
+        return userService.login(user.getEmail(),user.getPassword());
     }
 
     //Inyectamos los Servicios de Educations
@@ -63,8 +73,8 @@ public class Controller {
 
     //Mapeamos los metodos http para la entidad education
     @PostMapping("/api/new/education")
-    public void addEducation (@RequestBody Education education){
-        educationService.saveEducation(education);
+    public Education addEducation (@RequestBody Education education){
+        return educationService.saveEducation(education);
     }
 
     @GetMapping("/api/list/education")
@@ -79,9 +89,14 @@ public class Controller {
     }
 
     @PutMapping("/api/modify/education")
-    public void updateEducation(@RequestBody Education education){
-        educationService.deleteEducation(education.getId());
-        educationService.saveEducation(education);
+    public Education updateEducation(@RequestBody Education education){
+        Education updateEducation = educationService.searchEducation(education.getId());
+        updateEducation.setInstitucion(education.getInstitucion());
+        updateEducation.setFecha_ingreso(education.getFecha_ingreso());
+        updateEducation.setFecha_egreso(education.getFecha_egreso());
+        updateEducation.setDescripcion(education.getDescripcion());
+        updateEducation.setFoto(education.getFoto());
+        return educationService.saveEducation(updateEducation);
     }
 
     //Inyectamos los Servicios de Skills
@@ -90,8 +105,8 @@ public class Controller {
 
     //Mapeamos los metodos http para la entidad skill
     @PostMapping("/api/new/skill")
-    public void addSkill (@RequestBody Skill skill){
-        skillService.saveSkill(skill);
+    public Skill addSkill (@RequestBody Skill skill){
+        return skillService.saveSkill(skill);
     }
 
     @GetMapping("/api/list/skill")
@@ -106,9 +121,11 @@ public class Controller {
     }
 
     @PutMapping("/api/modify/skill")
-    public void updateSkill(@RequestBody Skill skill){
-        skillService.deleteSkill(skill.getId());
-        skillService.saveSkill(skill);
+    public Skill updateSkill(@RequestBody Skill skill){
+        Skill updateSkill = skillService.searchSkill(skill.getId());
+        updateSkill.setNombre(skill.getNombre());
+        updateSkill.setConocimientos(skill.getConocimientos());
+        return skillService.saveSkill(updateSkill);
     }
 
     //Inyectamos los Servicios de Works
@@ -117,8 +134,8 @@ public class Controller {
 
     //Mapeamos los metodos http para la entidad skill
     @PostMapping("/api/new/work")
-    public void addSkill (@RequestBody Work work){
-        workService.saveWork(work);
+    public Work addSkill (@RequestBody Work work){
+        return workService.saveWork(work);
     }
 
     @GetMapping("/api/list/work")
@@ -133,9 +150,14 @@ public class Controller {
     }
 
     @PutMapping("/api/modify/work")
-    public void updateWork(@RequestBody Work work){
-        workService.deleteWork(work.getId());
-        workService.saveWork(work);
+    public Work updateWork(@RequestBody Work work){
+        Work updateWork = workService.searchWork(work.getId());
+        updateWork.setInstitucion(work.getInstitucion());
+        updateWork.setCargo(work.getCargo());
+        updateWork.setFecha_desde(work.getFecha_desde());
+        updateWork.setFecha_hasta(work.getFecha_hasta());
+        updateWork.setDescripcion(work.getDescripcion());
+        return workService.saveWork(updateWork);
     }
 
     //Inyectamos los Servicios de Projects
@@ -144,8 +166,8 @@ public class Controller {
 
     //Mapeamos los metodos http para la entidad skill
     @PostMapping("/api/new/project")
-    public void addProject (@RequestBody Project project){
-        projectService.saveProject(project);
+    public Project addProject (@RequestBody Project project){
+        return projectService.saveProject(project);
     }
 
     @GetMapping("/api/list/project")
@@ -160,9 +182,12 @@ public class Controller {
     }
 
     @PutMapping("/api/modify/project")
-    public void updateWork(@RequestBody Project project){
-        projectService.deleteProject(project.getId());
-        projectService.saveProject(project);
+    public Project updateWork(@RequestBody Project project){
+        Project updateProject = projectService.searchProject(project.getId());
+        updateProject.setNombre(project.getNombre());
+        updateProject.setFoto(project.getFoto());
+        updateProject.setDescripcion(project.getDescripcion());
+        return projectService.saveProject(updateProject);
     }
 
 }

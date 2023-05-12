@@ -20,8 +20,8 @@ public class SkillService implements ISkillService{
     }
 
     @Override
-    public void saveSkill(Skill skill) {
-        skillRepository.save(skill);
+    public Skill saveSkill(Skill skill) {
+        return skillRepository.save(skill);
     }
 
     @Override

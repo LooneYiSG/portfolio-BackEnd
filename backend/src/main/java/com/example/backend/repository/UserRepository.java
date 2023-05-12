@@ -8,4 +8,6 @@ import com.example.backend.Model.User;
 @Repository
 public interface UserRepository extends JpaRepository <User, Long> {
     
+    public User findByEmailAndPassword(String email, String password);
+
 }

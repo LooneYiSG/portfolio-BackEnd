@@ -8,7 +8,7 @@ public interface IWorkService {
 
     public List<Work> getWorkList();
 
-    public void saveWork(Work work);
+    public Work saveWork(Work work);
 
     public void deleteWork(Long id);
     

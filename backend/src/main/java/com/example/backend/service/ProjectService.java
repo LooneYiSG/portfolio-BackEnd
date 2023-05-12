@@ -20,8 +20,8 @@ public class ProjectService implements IProjectService{
     }
 
     @Override
-    public void saveProject(Project project) {
-        projectRepository.save(project);
+    public Project saveProject(Project project) {
+        return projectRepository.save(project);
     }
 
     @Override

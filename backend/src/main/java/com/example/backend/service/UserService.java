@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.backend.Model.User;
+import com.example.backend.Model.UserDTO;
 import com.example.backend.repository.UserRepository;
 
 @Service
@@ -20,8 +21,8 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public void saveUser(User user) {
-        userRepository.save(user);
+    public User saveUser(User user) {
+        return userRepository.save(user);
     }
 
     @Override
@@ -32,6 +33,13 @@ public class UserService implements IUserService{
     @Override
     public User searchUser(Long id) {
         return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public UserDTO login(String email, String password){
+        User usuario = userRepository.findByEmailAndPassword(email, password);
+        UserDTO userDTO = new UserDTO(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getSobre_mi(), usuario.getFoto());
+        return userDTO;
     }
     
 }
