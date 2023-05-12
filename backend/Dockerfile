@@ -1,5 +1,7 @@
 FROM amazoncorretto:8-alpine-jdk
 
-COPY ./backend.jar app.jar
+WORKDIR /app
+
+COPY backend.jar /app
 
 ENTRYPOINT ["java","-jar","/app.jar"]
