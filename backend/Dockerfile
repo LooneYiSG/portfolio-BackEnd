@@ -1,4 +1,4 @@
-FROM amazoncorretto:8-alpine-jdk
+FROM amazoncorretto:19
 
 COPY target/YoProgramo.jar app.jar
 
