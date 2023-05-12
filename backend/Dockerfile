@@ -1,4 +1,4 @@
-FROM amazoncorretto:8-alpine-jdk
+FROM amazoncorretto:19
 
 COPY backend/backend.jar app.jar
 
