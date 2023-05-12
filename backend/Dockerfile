@@ -1,5 +1,5 @@
 FROM amazoncorretto:19
 
-COPY backend.jar app.jar
+COPY /backend.jar app.jar
 
 ENTRYPOINT ["java","-jar","/app.jar"]
