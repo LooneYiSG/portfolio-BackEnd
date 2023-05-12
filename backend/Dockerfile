@@ -1,5 +1,5 @@
-FROM amazoncorretto:19
+FROM amazoncorretto:8-alpine-jdk
 
-COPY ./target/backend.jar app.jar
+COPY ./backend.jar app.jar
 
 ENTRYPOINT ["java","-jar","/app.jar"]
