@@ -1,6 +1,6 @@
 FROM amazoncorretto:19
 
-WORKDIR /backend
+WORKDIR backend/
 
 COPY backend.jar app.jar
 
