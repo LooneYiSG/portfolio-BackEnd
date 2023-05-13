@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @RestController
-@CrossOrigin (origins = "http://localhost:4200")
+@CrossOrigin (origins = "https://frontend-portfolio-samuel.web.app/")
 public class Controller {
 
     //Inyectamos los Servicios de User
